@@ -7,9 +7,8 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Formik } from "formik";
-import RegisterForm from "../components/RegisterForm";
+import RegisterForm from "../components/auth/RegisterForm";
 
-// import AuthImage from "../components/AuthImage";
 
 const Register = () => {
   return (
@@ -51,14 +50,16 @@ const Register = () => {
               firstName: "",
               lastName: "",
               email: "",
+              image:"",
+              bio:"",
               password: "",
             }}
-            validationSchema={SignupSchema}
-            onSubmit={(values)=>{
-                console.log(values)
+            validate={{}}
+            onSubmit={(values) => {
+              
             }}
-
-            component={(props)=>( <RegisterForm  {...props}   />  )}
+            component={(props)=> <RegisterForm {...props} />}
+            
           />
 
 
