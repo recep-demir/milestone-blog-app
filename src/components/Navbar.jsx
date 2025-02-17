@@ -26,7 +26,7 @@ function Navbar() {
   const handleCloseUserMenu = () => setAnchorElUser(null);
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "black" }}>
+    <AppBar position="static" sx={{ backgroundColor: "secondary.second" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <RssFeedIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
