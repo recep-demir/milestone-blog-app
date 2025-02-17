@@ -4,10 +4,13 @@ function App() {
 
 
   return (
+    
+      <AppRouter/>
+
   
 
 
-    <AppRouter/>
+    
     
   )
 }
