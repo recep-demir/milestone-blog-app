@@ -26,14 +26,14 @@ const Register = () => {
       ,
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
-      .min(6, "Password should be more than 6 character")
+      .min(8, "Password should be more than 8 character")
       .matches(/[a-z]/, "Password should include lowercase")
       .matches(/[A-Z]/, "Password should include uppercase")
-      .matches(/\d+/, "Password should include numeric"),
-      // .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
+      .matches(/\d+/, "Password should include numeric")
+      .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
   });
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+
       <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
         <Grid
           container
@@ -86,9 +86,7 @@ const Register = () => {
         </Grid>
       </Container>
       
-     
-      <Footer />
-    </Box>
+
   );
 };
 
