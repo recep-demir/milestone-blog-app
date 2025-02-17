@@ -5,11 +5,33 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import { Formik } from "formik";
+import { Formik, Form, Field } from 'formik';
+ import * as Yup from 'yup';
 import RegisterForm from "../components/auth/RegisterForm";
-import Footer from "../components/Footer"; // Footer'ı dahil et
+import Footer from "../components/Footer"; 
 
 const Register = () => {
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(5, "Too short. Username should be more than 5 character")
+      .max(50, "Too Long! Username shouldn't be more than 50 character")
+      .required("Required"),
+    firstName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      ,
+    lastName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      ,
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+      .min(6, "Password should be more than 6 character")
+      .matches(/[a-z]/, "Password should include lowercase")
+      .matches(/[A-Z]/, "Password should include uppercase")
+      .matches(/\d+/, "Password should include numeric"),
+      // .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
+  });
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
@@ -50,8 +72,10 @@ const Register = () => {
                 bio: "",
                 password: "",
               }}
-              validate={{}}
-              onSubmit={(values) => {}}
+              validationSchema={SignupSchema}
+              onSubmit={(values) => {
+                console.log(values)
+              }}
               component={(props) => <RegisterForm {...props} />}
             />
 

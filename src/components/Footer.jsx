@@ -8,7 +8,7 @@ function Footer() {
       Developed by Recep Demir
       </Typography>
       <Typography variant="body1">
-        All rights reserved © 2025 . 
+        All rights reserved 2025
       </Typography>
     </Box>
   );

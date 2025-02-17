@@ -28,7 +28,7 @@ const RegisterForm = ({
         />
         <TextField
         name="firstName"
-        label="FirstName*"
+        label="FirstName"
         variant="outlined"
         fullWidth
         value={values.firstName}
@@ -40,7 +40,7 @@ const RegisterForm = ({
       />
       <TextField
         name="lastName"
-        label="LastName*"
+        label="LastName"
         variant="outlined"
         fullWidth
         value={values.lastName}
