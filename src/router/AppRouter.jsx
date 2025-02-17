@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../pages/NewBlog";
+import Footer from "../components/Footer";
 
 const AppRouter = () => {
   return (
