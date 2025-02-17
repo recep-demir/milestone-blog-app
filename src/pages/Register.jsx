@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 import { Formik, Form, Field } from 'formik';
  import * as Yup from 'yup';
 import RegisterForm from "../components/auth/RegisterForm";
-import Footer from "../components/Footer"; 
+
 
 const Register = () => {
   const SignupSchema = Yup.object().shape({
