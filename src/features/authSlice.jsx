@@ -39,5 +39,6 @@ export const {
     fetchStart,
     fetchFail,
     registerSuccess,
+    logoutSuccess,
   } = authSlice.actions;
   export default authSlice.reducer;
