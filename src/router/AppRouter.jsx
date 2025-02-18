@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Profile from "../pages/Profile";
+import NotFound from "../pages/NotFound";
+import Detail from "../pages/Detail";
 
 const AppRouter = () => {
   return (
@@ -22,9 +24,11 @@ const AppRouter = () => {
         <Route path="" element = {<PrivateRouter/>}>
           <Route path="/profile" element={<Profile/>} />
           <Route path="/new-blog" element={<NewBlog/>} />
+          <Route path="/detail" element={<Detail/>} />
          
           
         </Route>
+        <Route path="*" element={<NotFound/>} />
         
 
 
