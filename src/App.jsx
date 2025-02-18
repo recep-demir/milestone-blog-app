@@ -1,5 +1,8 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import AppRouter from './router/AppRouter'
+import { Provider } from 'react-redux';
+import store from "./app/store";
+
 
 
 function App() {
@@ -18,7 +21,9 @@ function App() {
 
   return (
     <ThemeProvider theme = {theme}>
-      <AppRouter/>
+      <Provider store={store}>
+          <AppRouter />
+        </Provider>
 
       </ThemeProvider>
     

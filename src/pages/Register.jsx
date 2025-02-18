@@ -8,9 +8,11 @@ import { Box } from "@mui/material";
 import { Formik, Form, Field } from 'formik';
  import * as Yup from 'yup';
 import RegisterForm from "../components/auth/RegisterForm";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 
 const Register = () => {
+  const {register} = useAuthCalls()
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
       .min(5, "Too short. Username should be more than 5 character")
@@ -75,6 +77,7 @@ const Register = () => {
               validationSchema={SignupSchema}
               onSubmit={(values) => {
                 console.log(values)
+                register(values)
               }}
               component={(props) => <RegisterForm {...props} />}
             />
