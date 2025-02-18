@@ -19,6 +19,7 @@ const useAuthCalls = () => {
         "https://37130.fullstack.clarusway.com/users/",
         userInfo);
         dispatch(registerSuccess(data))
+        localStorage.setItem("token", data.token)
         toastSuccessNotify("User registered successfully")
         navigate("/")
       
@@ -34,7 +35,8 @@ const useAuthCalls = () => {
         userInfo
       );
       dispatch(loginSuccess(data))
-      toastSuccessNotify("User login successfully")
+      localStorage.setItem("token", data.token)
+      toastSuccessNotify("Login successful")
       navigate("/")
     } catch (error) {
         dispatch(fetchFail())
@@ -54,10 +56,10 @@ const useAuthCalls = () => {
           },
         }
       );
-      
+      localStorage.removeItem("token");      
       dispatch(logoutSuccess())
-      toastSuccessNotify("User logout successfully")
-      navigate("/");
+      toastSuccessNotify("User logged out successfully")
+      navigate("/login");
     } catch (error) {
       console.log(error)
       dispatch(fetchFail())
