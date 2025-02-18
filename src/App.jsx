@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import AppRouter from './router/AppRouter'
 import { Provider } from 'react-redux';
 import store from "./app/store";
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -24,6 +25,7 @@ function App() {
       <Provider store={store}>
           <AppRouter />
         </Provider>
+        <ToastContainer/>
 
       </ThemeProvider>
     

@@ -21,8 +21,17 @@ const authSlice = createSlice({
       state.loading= false;
       state.currentUser = payload.data.username;
       state.token = payload.token;
+    },
+    logoutSuccess: (state) => {
+      state.loading= false;
+      state.token = null;
+      state.currentUser = null;
+    },
 
-    }
+    
+
+
+
   },
 });
 
