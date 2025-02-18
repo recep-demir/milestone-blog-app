@@ -15,6 +15,7 @@
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
     "@mui/styled-engine-sc": "^6.4.3",
+    "axios": "^1.7.9",
     "formik": "^2.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
