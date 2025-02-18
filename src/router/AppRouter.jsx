@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import Detail from "../pages/Detail";
+import MyBlog from "../pages/MyBlog";
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/about" element = {<About/>}/>
         <Route path="" element = {<PrivateRouter/>}>
+          <Route path="/my-blogs" element={<MyBlog/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/new-blog" element={<NewBlog/>} />
           <Route path="/detail" element={<Detail/>} />
