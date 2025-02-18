@@ -3,6 +3,7 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, 
 import MenuIcon from "@mui/icons-material/Menu";
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import { Link, useNavigate } from "react-router-dom";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 const pages = [
   { name: "Dashboard", path: "/" },
@@ -18,7 +19,8 @@ const settings = [
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate(); // Programatik yönlendirme için
+  const navigate = useNavigate(); 
+  const {logout} = useAuthCalls()
 
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
@@ -48,7 +50,6 @@ function Navbar() {
              BLOG
           </Typography>
 
-          {/* Mobil Menü */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton size="large" onClick={handleOpenNavMenu} color="inherit">
               <MenuIcon />
@@ -67,7 +68,7 @@ function Navbar() {
             </Menu>
           </Box>
 
-          {/* Büyük Ekran Menü */}
+          
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button key={page.name} component={Link} to={page.path} sx={{ my: 2, color: "white", display: "block" }}>
@@ -76,7 +77,7 @@ function Navbar() {
             ))}
           </Box>
 
-          {/* Kullanıcı Menü */}
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -90,7 +91,8 @@ function Navbar() {
               sx={{ mt: "45px" }}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={() => navigate(setting.path)}>
+                <MenuItem key={setting.name} onClick={setting.name === "Logout" ? logout : () => navigate(setting.path)}> {/* i call the logout function for Logout */}
+    
                   <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
               ))}

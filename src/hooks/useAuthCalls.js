@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, registerSuccess } from '../features/authSlice';
+import { fetchFail, fetchStart, logoutSuccess, registerSuccess,loginSuccess } from '../features/authSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toastSuccessNotify } from '../helper/ToastNotify';
@@ -20,10 +20,25 @@ const useAuthCalls = () => {
         userInfo);
         dispatch(registerSuccess(data))
         toastSuccessNotify("User registered successfully")
-        navigate("/dashboard")
+        navigate("/")
       
     } catch (error) {
       dispatch(fetchFail())
+    }
+  };
+  const login = async (userInfo) => {
+    dispatch(fetchStart())
+    try {
+      const { data } = await axios.post(
+        "https://37130.fullstack.clarusway.com/auth/login",
+        userInfo
+      );
+      dispatch(loginSuccess(data))
+      toastSuccessNotify("User login successfully")
+      navigate("/")
+    } catch (error) {
+        dispatch(fetchFail())
+        
     }
   };
 
@@ -32,17 +47,19 @@ const useAuthCalls = () => {
 
     try {
       const { data } = await axios(
-        "https://10003.fullstack.clarusway.com/auth/logout",
+        "https://37130.fullstack.clarusway.com/auth/logout",
         {
           headers: {
             Authorization: `Token ${token}`,
           },
         }
       );
-      navigate("/dashboard");
+      
       dispatch(logoutSuccess())
       toastSuccessNotify("User logout successfully")
+      navigate("/");
     } catch (error) {
+      console.log(error)
       dispatch(fetchFail())
     }
   };
@@ -51,7 +68,7 @@ const useAuthCalls = () => {
 
 
 
-  return {register,logout}
+  return {register, login, logout}
 }
 
 export default useAuthCalls

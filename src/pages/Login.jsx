@@ -6,12 +6,13 @@ import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
-// import useAuthCall from "../hook/useAuthCall";
 import * as Yup from "yup";
 import LoginForm from "../components/auth/LoginForm";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 const Login = () => {
-  // const theme = useTheme();
+  const {login} = useAuthCalls()
+
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -34,8 +35,6 @@ const Login = () => {
         }}
       >
         
-
-
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
@@ -55,18 +54,13 @@ const Login = () => {
         initialValues={{ username: "", password: "" }}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
-          // login(values);
+          login(values);
           actions.resetForm();
           actions.setSubmitting(false);
         }}
        component={(props)=> <LoginForm {...props}/>}
       
         />
-
-
-
-
-
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/register">
               Don't have an account? Sign Up
