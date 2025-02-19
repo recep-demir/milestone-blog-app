@@ -22,6 +22,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { clear } = blogSlice.actions;
+export const { fetchStart,fetchFail } = blogSlice.actions;
 
 export default blogSlice.reducer;
