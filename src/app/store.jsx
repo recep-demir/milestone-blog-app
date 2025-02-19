@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 // import { createStore } from 'redux'
 import authReducer from "../features/authSlice";
+import blogReducer from "../features/blogSlice";
 import { persistStore, persistReducer,REHYDRATE,FLUSH,
   PAUSE,
   PERSIST,
@@ -19,6 +20,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    stock:blogReducer
     
   },
  
