@@ -23,6 +23,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "react-toastify": "^11.0.3",
+    "redux-persist": "^6.0.0",
     "styled-components": "^6.1.15",
     "yup": "^1.6.1"
   },
