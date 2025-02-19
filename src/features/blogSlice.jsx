@@ -15,6 +15,10 @@ const blogSlice = createSlice({
         state.loading = true;
         state.error = false;
       },
+      fetchFail: (state) => {
+        state.loading = false;
+        state.error = true;
+      },
   },
 });
 
