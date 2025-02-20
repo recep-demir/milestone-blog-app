@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import useBlogCalls from '../hooks/useBlogCalls'
+import Card from '../components/blog/card'
 
 
 const Dashboard = () => {
@@ -11,7 +12,10 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div>Dashboard</div>
+    <div>Dashboard
+
+      <Card></Card>
+    </div>
   )
 }
 
