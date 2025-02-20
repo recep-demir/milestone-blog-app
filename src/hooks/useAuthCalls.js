@@ -5,11 +5,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toastSuccessNotify } from '../helper/ToastNotify';
 import { useSelector } from 'react-redux';
+import useAxios from './useAxios';
 
 const useAuthCalls = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const {token} =useSelector(state => state.auth)
+  const {axiosWithToken}=useAxios()
   const BASE_URL=import.meta.env.VITE_BASE_URL
 
   const register = async (userInfo) =>{
@@ -49,14 +51,8 @@ const useAuthCalls = () => {
     dispatch(fetchStart());
 
     try {
-      const { data } = await axios(
-        `${BASE_URL}auth/logout`,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
+      await axiosWithToken.get("auth/logout/")
+      
       localStorage.removeItem("token");      
       dispatch(logoutSuccess())
       toastSuccessNotify("User logged out successfully")
