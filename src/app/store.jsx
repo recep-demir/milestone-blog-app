@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { createStore } from 'redux'
 import authReducer from "../features/authSlice";
 import blogReducer from "../features/blogSlice";
 import { persistStore, persistReducer,REHYDRATE,FLUSH,
@@ -7,7 +6,7 @@ import { persistStore, persistReducer,REHYDRATE,FLUSH,
   PERSIST,
   PURGE,
   REGISTER,} from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage'
 
 
 const persistConfig = {
@@ -35,7 +34,7 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
-export let persistor = persistStore(store)  // named export istediğimiz kadar bu şekilde çıkış yapılabilir, import ederken {} içinde alınır
+export let persistor = persistStore(store)
 
 
-export default store;   // export default 1 tane olabilir
+export default store;

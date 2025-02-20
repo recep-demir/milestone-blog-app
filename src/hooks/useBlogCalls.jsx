@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchFail, fetchStart } from '../features/blogSlice'
+import { blogSuccess, fetchFail, fetchStart } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 const useBlogCalls = () => {
     const dispatch =useDispatch()
@@ -19,17 +20,14 @@ const useBlogCalls = () => {
                 }
             )
             
+            dispatch(blogSuccess(data))
         } catch (error) {
             dispatch(fetchFail())
-            
         }
     }
 
 
-
-  return (
-    <div>useBlogCalls</div>
-  )
+  return {getBlogs}
 }
 
 export default useBlogCalls

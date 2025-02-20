@@ -19,9 +19,15 @@ const blogSlice = createSlice({
         state.loading = false;
         state.error = true;
       },
+      blogSuccess: (state,{payload}) =>{
+        console.log(payload)
+        state.loading =false;
+        state.blogs =payload;
+        
+      },
   },
 });
 
-export const { fetchStart,fetchFail } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess } = blogSlice.actions;
 
 export default blogSlice.reducer;
