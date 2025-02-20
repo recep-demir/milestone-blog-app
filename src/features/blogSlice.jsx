@@ -22,7 +22,7 @@ const blogSlice = createSlice({
       blogSuccess: (state,{payload}) =>{
         console.log(payload)
         state.loading =false;
-        state.blogs =payload;
+        state.blogs =payload.data;
         
       },
   },
