@@ -1,10 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchFail, fetchStart } from '../features/blogSlice'
+import { useSelector } from 'react-redux'
 
 const useBlogCalls = () => {
     const dispatch =useDispatch()
     const BASE_URL=import.meta.env.VITE_BASE_URL
+    const {token}=useSelector(state => state.auth)
 
     const getBlogs = async () => {
         dispatch(fetchStart())
@@ -16,7 +18,7 @@ const useBlogCalls = () => {
                     },
                 }
             )
-            }
+            
         } catch (error) {
             dispatch(fetchFail())
             
