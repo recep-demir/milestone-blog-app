@@ -10,8 +10,6 @@ const Dashboard = () => {
     getBlogs();
   }, [])
 
-
-
   return (
     <div>Dashboard</div>
   )
