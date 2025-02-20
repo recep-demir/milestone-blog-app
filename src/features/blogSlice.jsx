@@ -20,8 +20,8 @@ const blogSlice = createSlice({
         state.error = true;
       },
       blogSuccess: (state,{payload}) =>{
-        console.log(payload)
         state.loading =false;
+        state.error =false;
         state.blogs =payload.data;
         
       },
