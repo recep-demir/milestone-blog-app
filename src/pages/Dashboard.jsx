@@ -1,21 +1,27 @@
 import React from 'react'
 import { useEffect } from 'react'
 import useBlogCalls from '../hooks/useBlogCalls'
-import Card from '../components/blog/card'
+import { Container, Typography } from '@mui/material'
+import { useSelector } from 'react-redux'
+import BlogCard from '../components/blog/BlogCard'
 
 
 const Dashboard = () => {
   const {getBlogs}=useBlogCalls()
+  const {blogs} =useSelector(state => state.blog)
 
   useEffect(() => {
     getBlogs();
   }, [])
 
   return (
-    <div>Dashboard
-
-      <Card></Card>
-    </div>
+    <Container>
+      {blogs?.map((blog)=>(
+        <BlogCard key={blog.id} blog={blog}/>
+      ))}
+      
+      
+    </Container>
   )
 }
 
