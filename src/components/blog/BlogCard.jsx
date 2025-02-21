@@ -8,11 +8,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function BlogCard({ blog, handleDetails }) {
   const { _id, title, createdAt, content, image,likes } = blog;
+  const navigate = useNavigate()
 
   
 const formatDate = (dateString) => {
@@ -80,7 +82,7 @@ const formatDate = (dateString) => {
           <Typography>0</Typography>
         </Box>
         </Box>
-        <Button variant="contained" onClick={() => handleDetails(_id)}>
+        <Button variant="contained" onClick={() => navigate(`/detail/${blog._id}`, { state: { blog } })}>
           Read More
         </Button>
       </CardActions>
