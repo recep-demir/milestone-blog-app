@@ -23,7 +23,6 @@ const useBlogCalls = () => {
         }
     }
 
-
   return {getBlogs}
 }
 
