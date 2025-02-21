@@ -8,9 +8,9 @@ const Dashboard = () => {
   const { getBlogs } = useBlogCalls();
   const { blogs } = useSelector((state) => state.blog);
 
-  
+  //!Pagination
   const [page, setPage] = useState(1);
-  const blogsPerPage = 10;
+  const blogsPerPage = 8;
   const totalPages = Math.ceil((blogs?.length || 0) / blogsPerPage);
   const currentBlogs = blogs?.slice(
     (page - 1) * blogsPerPage, 
