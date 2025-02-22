@@ -22,16 +22,38 @@ const useBlogCalls = () => {
             dispatch(fetchFail())
         }
     }
+
+    const getComments = async (blogId) => {
+        try {
+          const { data } = await axiosWithToken.get(`/comments/${blogId}`);
+          dispatch(commentsSuccess({ blogId, comments: data }));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
+      const addComment = async (blogId, commentText) => {
+        try {
+          const { data } = await axiosWithToken.post("/comments/", {
+            blogId,
+            comment: commentText,
+          });
+          dispatch(addCommentSuccess({ blogId, comment: data }));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
     const toggleLike = async (id, userId) => {
         try {
           await axiosWithToken.post(`blogs/${id}/postLike`);
           dispatch(toggleLikeInState({ blogId: id, userId }));
         } catch (error) {
-          console.error("Like error:", error);
+          console.error(error);
         }
       };
 
-  return {getBlogs,toggleLike}
+  return {getBlogs,toggleLike,getComments,addComment}
 }
 
 export default useBlogCalls

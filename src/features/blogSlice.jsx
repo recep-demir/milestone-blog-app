@@ -35,10 +35,20 @@ const blogSlice = createSlice({
           }
         }
       },
+      commentsSuccess: (state, { payload }) => {
+        state.comments[payload.blogId] = payload.comments;
+      },
+      addCommentSuccess: (state, { payload }) => {
+        if (state.comments[payload.blogId]) {
+          state.comments[payload.blogId].push(payload.comment);
+        } else {
+          state.comments[payload.blogId] = [payload.comment];
+        }
+      },
 
   },
 });
 
-export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState  } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentsSuccess,addCommentSuccess } = blogSlice.actions;
 
 export default blogSlice.reducer;
