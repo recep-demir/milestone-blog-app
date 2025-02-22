@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { blogSuccess, fetchFail, fetchStart } from '../features/blogSlice'
+import { blogSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import useAxios from './useAxios'
@@ -22,8 +22,16 @@ const useBlogCalls = () => {
             dispatch(fetchFail())
         }
     }
+    const toggleLike = async (id, userId) => {
+        try {
+          await axiosWithToken.post(`blogs/${id}/postLike`);
+          dispatch(toggleLikeInState({ blogId: id, userId }));
+        } catch (error) {
+          console.error("Like error:", error);
+        }
+      };
 
-  return {getBlogs}
+  return {getBlogs,toggleLike}
 }
 
 export default useBlogCalls

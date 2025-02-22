@@ -9,12 +9,18 @@ import CommentIcon from '@mui/icons-material/Comment';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import useBlogCalls from "../../hooks/useBlogCalls";
+import { useSelector } from "react-redux";
 
 
 
 export default function BlogCard({ blog, handleDetails }) {
-  const { _id, title, createdAt, content, image,likes } = blog;
+  const { _id, title, createdAt, content, image,likes,countOfVisitors,comments } = blog;
   const navigate = useNavigate()
+  const { toggleLike } = useBlogCalls();
+  const { user } = useSelector((state) => state.auth);
+
+  const isLiked = likes.includes(user?._id);
 
   
 const formatDate = (dateString) => {
@@ -69,17 +75,19 @@ const formatDate = (dateString) => {
 
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
       <Box sx={{ display: "flex", gap: 3 }}>
-        <Box sx={{ display: "flex", gap: 0.5 }}>
-          <FavoriteIcon />
+      <Box sx={{ display: "flex", gap:0.5, alignItems: "center", cursor: "pointer" ,"&:hover": { backgroundColor: "#f0f0f0", boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"},"&:active": { transform: "scale(0.9)"}
+        
+       }} onClick={() => toggleLike(_id, user?._id)}>
+          <FavoriteIcon sx={{ color: isLiked ? "red" : "gray" }} />
           <Typography>{likes.length}</Typography>
         </Box>
-        <Box sx={{ display: "flex", gap: 0.5 }}>
+        <Box sx={{ display: "flex", gap: 0.5,cursor: "pointer" ,"&:hover": { backgroundColor: "#f0f0f0", boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"},"&:active": { transform: "scale(0.9)"}}}>
           <CommentIcon />
-          <Typography>0</Typography>
+          <Typography>{comments.length}</Typography>
         </Box>
-        <Box sx={{ display: "flex", gap: 0.5 }}>
+        <Box sx={{ display: "flex", gap: 0.5,cursor: "pointer" ,"&:hover": { backgroundColor: "#f0f0f0", boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"},"&:active": { transform: "scale(0.9)"}}}>
           <RemoveRedEyeIcon />
-          <Typography>0</Typography>
+          <Typography>{countOfVisitors}</Typography>
         </Box>
         </Box>
         <Button variant="contained" onClick={() => navigate(`/detail/${blog._id}`, { state: { blog } })}>

@@ -66,6 +66,7 @@ const Detail = () => {
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6">Comments</Typography>
         <Box sx={{ mt: 2, p: 2, border: "1px solid #ddd", borderRadius: 2 }}>
+        
           <Typography variant="body2" sx={{ fontWeight: "bold" }}>
             Staff
           </Typography>

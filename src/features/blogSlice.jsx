@@ -22,12 +22,23 @@ const blogSlice = createSlice({
       blogSuccess: (state,{payload}) =>{
         state.loading =false;
         state.error =false;
-        state.blogs =payload.data;
-        
+        state.blogs =payload.data;        
       },
+      toggleLikeInState: (state, { payload }) => {
+        const blog = state.blogs.find((b) => b._id === payload.blogId);
+        if (blog) {
+          const userIndex = blog.likes.indexOf(payload.userId);
+          if (userIndex === -1) {
+            blog.likes.push(payload.userId);
+          } else {
+            blog.likes.splice(userIndex, 1);
+          }
+        }
+      },
+
   },
 });
 
-export const { fetchStart,fetchFail,blogSuccess } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState  } = blogSlice.actions;
 
 export default blogSlice.reducer;
