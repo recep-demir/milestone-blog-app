@@ -10,7 +10,6 @@ import useBlogCalls from "../hooks/useBlogCalls";
 import { useEffect } from "react";
 
 const NewBlog = () => {
-  const dispatch =useDispatch();
   const {categories} = useSelector(state => state.blog)
   const {getCategories} =useBlogCalls()
 
