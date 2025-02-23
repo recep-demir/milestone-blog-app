@@ -23,58 +23,37 @@ const NewBlog = () => {
   });
 
   useEffect(() => {
-    console.log("Kategoriler çekiliyor...");
+    console.log("Kategoriler geliyorrr");
     getCategories();
   }, []);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addBlog(formData);
+    navigate("/");
+  };
 
   return (
     <Container maxWidth="lg">
-      <Grid
-        container
-        justifyContent="center"
-        direction="row-reverse"
-        rowSpacing={{ sm: 3 }}
-        sx={{
-          height: "100vh",
-          p: 2,
-        }}
-      >
-      
-
+      <Grid container justifyContent="center" direction="row-reverse" rowSpacing={{ sm: 3 }} sx={{ height: "100vh", p: 2 }}>
         <Grid item xs={12} sm={10} md={6}>
-          <Avatar
-            sx={{
-              backgroundColor: "secondary.light",
-              m: "auto",
-              width: 50,
-              height: 50,
-            }}
-          >
-            <LibraryAddIcon sx={{
-              m: "auto",
-              width: 40,
-              height: 40,
-            }} />
+        <Avatar sx={{ backgroundColor: "secondary.light", m: "auto", width: 50, height: 50 }}>
+            <LibraryAddIcon sx={{ m: "auto", width: 40, height: 40 }} />
           </Avatar>
-          <Typography
-            variant="h4"
-            align="center"
-            mb={2}
-            color="secondary.light"
-          >
-            New Blog
-          </Typography>
+          <Typography variant="h4" align="center" mb={2} color="secondary.light">New Blog</Typography>
 
-
-          <form >
+          <form  onSubmit={handleSubmit}>
       <TextField
         name="title"
         label="Title"
         variant="outlined"
         fullWidth
         margin="normal"
-        onChange
+        onChange={handleChange}
         required
         type="text"
       />
@@ -83,7 +62,7 @@ const NewBlog = () => {
         variant="outlined"
         fullWidth
         margin="normal"       
-        onChange
+        onChange={handleChange}
         required
       />
       <FormControl required
@@ -91,70 +70,35 @@ const NewBlog = () => {
       fullWidth
       margin="normal">
         <InputLabel>Category</InputLabel>
-        <Select
-          // value={category}
-          onChange
-          
-        >
+        <Select name="categoryId" value={formData.categoryId} onChange={handleChange}>         
           {categories.map((category)=>(
             <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>
-            
-
           ))}
-          
-          
-          {/* API'den çekilecek kategoriler buraya eklenebilir */}
         </Select>
       </FormControl>
-      <FormControl 
-      variant="outlined"
-      fullWidth
-      margin="normal"
-      required
       
-      >
-        <InputLabel>Status</InputLabel>
-        <Select
-          // value={status}
-          onChange
-        >
+      <FormControl variant="outlined" fullWidth margin="normal" required>
+          <InputLabel>Status</InputLabel>
+          <Select name="isPublish" value={formData.isPublish} onChange={handleChange}>
           <MenuItem value="draft">Draft</MenuItem>
           <MenuItem value="publish">Publish</MenuItem>
-        </Select>
-      </FormControl>
+          </Select>
+        </FormControl>
 
-      <TextField
-        label="Content"
-        variant="outlined"
-      fullWidth
-      margin="normal"
-        multiline
-        rows={2}
-        // value={content}
-        onChange={(e) => setContent(e.target.value)}
-        required
-      />
+        <TextField name="content" label="Content" variant="outlined" fullWidth margin="normal" multiline rows={2} onChange={handleChange} required />
       <br />
       <br />
       
       <Button variant="contained" fullWidth type="submit">
         New Blog
-      </Button>
-    
+      </Button>  
 
     </form>
-    
-      
-        </Grid>
-       
+        </Grid> 
 
       </Grid>
-      <br />
-      <br />
-      <br />
-      <br />
-    </Container>
-    
+      <br />      <br />      <br />      <br />
+    </Container>   
     
   );
 };
