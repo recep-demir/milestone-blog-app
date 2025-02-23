@@ -9,6 +9,7 @@ const blogSlice = createSlice({
     token:null,
     blogs:[],
     comments:[],
+    categories:[],
 
   },
   reducers: {
@@ -35,6 +36,12 @@ const blogSlice = createSlice({
         console.log("Redux'a eklenen yorum:", payload);
         state.comments.push(payload);
       },
+      categorySuccess: (state,{payload}) =>{
+        state.loading =false;
+        state.error =false;
+        state.categories =payload.data;
+        console.log("kategori" , payload.data)
+      },
 
       toggleLikeInState: (state, { payload }) => {
         const blog = state.blogs.find((b) => b._id === payload.blogId);
@@ -52,6 +59,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess,addCommentToState  } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess,addCommentToState, categorySuccess } = blogSlice.actions;
 
 export default blogSlice.reducer;

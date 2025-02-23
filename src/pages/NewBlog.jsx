@@ -4,8 +4,18 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Avatar, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import useBlogCalls from "../hooks/useBlogCalls";
 
 const NewBlog = () => {
+  const dispatch =useDispatch();
+  const {categories} = useSelector(state => state.blog)
+  const {getCategories} =useBlogCalls()
+
+
+
+
   return (
     <Container maxWidth="lg">
       <Grid
