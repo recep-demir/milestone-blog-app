@@ -19,7 +19,7 @@ const NewBlog = () => {
     image: "",
     categoryId: "",
     content: "",
-    isPublish: "draft"
+    isPublish: "false"
   });
 
   useEffect(() => {
@@ -28,13 +28,21 @@ const NewBlog = () => {
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: name === "isPublish" ? value === "true" : value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addBlog(formData);
-    navigate("/");
+    if (formData.isPublish) {
+      navigate("/");
+    } else {
+      navigate("/myblog");
+    }
   };
 
   return (
@@ -80,8 +88,8 @@ const NewBlog = () => {
       <FormControl variant="outlined" fullWidth margin="normal" required>
           <InputLabel>Status</InputLabel>
           <Select name="isPublish" value={formData.isPublish} onChange={handleChange}>
-          <MenuItem value="draft">Draft</MenuItem>
-          <MenuItem value="publish">Publish</MenuItem>
+          <MenuItem value="false">Draft</MenuItem>
+          <MenuItem value="true">Publish</MenuItem>
           </Select>
         </FormControl>
 

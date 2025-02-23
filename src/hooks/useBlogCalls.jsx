@@ -55,20 +55,16 @@ const useBlogCalls = () => {
         }
     }
 
-    const addBlog = async() =>{
+    const addBlog = async(blogData) =>{
         dispatch(fetchStart())
 
         try {
-            const {data} =await axiosWithToken.post("blogs",{
-                categoryId,title,content,image,isPublish
-            })
+            const {data} =await axiosWithToken.post("blogs",{blogData})
             dispatch(createBlogSuccess(data))
-
             
         } catch (error) {
             console.log("Create Blog Error",error)
-            dispatch(fetchFail())
-            
+            dispatch(fetchFail())            
         }
     }
 
