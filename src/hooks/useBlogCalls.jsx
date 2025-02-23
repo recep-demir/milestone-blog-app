@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addCommentToState, blogSuccess, categorySuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
+import { addCommentToState, blogSuccess, categorySuccess, commentSuccess, createBlogSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import useAxios from './useAxios'
 
 const useBlogCalls = () => {
     const dispatch =useDispatch()
-    const BASE_URL=import.meta.env.VITE_BASE_URL
-    const {token}=useSelector(state => state.auth)
+    // const BASE_URL=import.meta.env.VITE_BASE_URL
+    // const {token}=useSelector(state => state.auth)
     const {axiosWithToken}=useAxios()
 
     const getBlogs = async () => {
@@ -32,9 +32,6 @@ const useBlogCalls = () => {
             dispatch(fetchFail())
         }
     }
-
-
-
     const addComment =async (blogId, comment) =>{
         dispatch(fetchStart());
         try {
@@ -46,7 +43,7 @@ const useBlogCalls = () => {
           dispatch(fetchFail());
         }
       };
-      const getCategories =async () =>{
+    const getCategories =async () =>{
         dispatch(fetchStart())
         try {
           const { data } = await axiosWithToken.get("categories");
@@ -55,6 +52,23 @@ const useBlogCalls = () => {
         } catch (error) {
           console.error("Kategori getirme hatası", error);
           dispatch(fetchFail());
+        }
+    }
+
+    const addBlog = async() =>{
+        dispatch(fetchStart())
+
+        try {
+            const {data} =await axiosWithToken.post("blogs",{
+                categoryId,title,content,image,isPublish
+            })
+            dispatch(createBlogSuccess(data))
+
+            
+        } catch (error) {
+            console.log("Create Blog Error",error)
+            dispatch(fetchFail())
+            
         }
     }
 
@@ -69,7 +83,7 @@ const useBlogCalls = () => {
       };
 
 
-  return {getBlogs,toggleLike,getComments,addComment,getCategories}
+  return {getBlogs,toggleLike,getComments,addComment,getCategories,addBlog}
 }
 
 export default useBlogCalls

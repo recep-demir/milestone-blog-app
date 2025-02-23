@@ -42,6 +42,9 @@ const blogSlice = createSlice({
         state.categories =payload.data;
         console.log("kategori" , payload.data)
       },
+      createBlogSuccess: (state, { payload }) => {
+        state.blogs.push(payload);
+      },
 
       toggleLikeInState: (state, { payload }) => {
         const blog = state.blogs.find((b) => b._id === payload.blogId);
@@ -59,6 +62,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess,addCommentToState, categorySuccess } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess,addCommentToState, categorySuccess,createBlogSuccess } = blogSlice.actions;
 
 export default blogSlice.reducer;
