@@ -20,8 +20,7 @@ const { currentUser } = useSelector(state => state.auth);
     image: "",
     categoryId: "",
     content: "",
-    isPublish: "false",
-    userId: currentUser?._id || ""
+    isPublish: "false"
   });
 
   useEffect(() => {

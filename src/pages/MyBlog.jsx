@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const MyBlogs = () => {
   const { blogs } = useSelector(state => state.blog);
   const { currentUser } = useSelector(state => state.auth);
+  console.log("Current User:", currentUser)
   console.log("myblog sayfasi", blogs)
   const { getBlogs } = useBlogCalls();
   const navigate = useNavigate();
