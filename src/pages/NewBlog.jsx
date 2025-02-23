@@ -7,13 +7,17 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";
+import { useEffect } from "react";
 
 const NewBlog = () => {
   const dispatch =useDispatch();
   const {categories} = useSelector(state => state.blog)
   const {getCategories} =useBlogCalls()
 
-
+  useEffect(() => {
+    console.log("Kategoriler çekiliyor...");
+    getCategories();
+  }, []);
 
 
   return (
@@ -84,9 +88,13 @@ const NewBlog = () => {
           onChange
           
         >
-          <MenuItem value="category1">Category 1</MenuItem>
-          <MenuItem value="category2">Category 2</MenuItem>
-          <MenuItem value="category3">Category 3</MenuItem>
+          {categories.map((category)=>(
+            <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>
+            
+
+          ))}
+          
+          
           {/* API'den çekilecek kategoriler buraya eklenebilir */}
         </Select>
       </FormControl>

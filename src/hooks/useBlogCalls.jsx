@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addCommentToState, blogSuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
+import { addCommentToState, blogSuccess, categorySuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import useAxios from './useAxios'
