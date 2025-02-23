@@ -13,13 +13,15 @@ const NewBlog = () => {
   const {categories} = useSelector(state => state.blog)
   const {getCategories,addBlog} =useBlogCalls()
   const navigate = useNavigate();
+const { currentUser } = useSelector(state => state.auth); 
 
   const [formData, setFormData] = useState({
     title: "",
     image: "",
     categoryId: "",
     content: "",
-    isPublish: "false"
+    isPublish: "false",
+    userId: currentUser?._id || ""
   });
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const NewBlog = () => {
     if (formData.isPublish) {
       navigate("/");
     } else {
-      navigate("/myblog");
+      navigate("/my-blogs");
     }
   };
 
@@ -66,6 +68,7 @@ const NewBlog = () => {
         type="text"
       />
       <TextField
+        name="image"
         label="Image URL"
         variant="outlined"
         fullWidth

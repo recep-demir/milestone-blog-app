@@ -59,7 +59,8 @@ const useBlogCalls = () => {
         dispatch(fetchStart())
 
         try {
-            const {data} =await axiosWithToken.post("blogs",{blogData})
+            console.log("Gönderilen Blog Verisi:", blogData)
+            const {data} =await axiosWithToken.post("blogs",blogData)
             dispatch(createBlogSuccess(data))
             
         } catch (error) {

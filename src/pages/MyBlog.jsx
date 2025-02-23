@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const MyBlogs = () => {
   const { blogs } = useSelector(state => state.blog);
+  const { currentUser } = useSelector(state => state.auth);
   console.log("myblog sayfasi", blogs)
   const { getBlogs } = useBlogCalls();
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const MyBlogs = () => {
   useEffect(() => {
     getBlogs();
   }, []);
+  console.log("Bloglar:", blogs);
 
-  const { currentUser } = useSelector(state => state.auth); // Kullanıcı bilgilerini al
-  const myBlogs = blogs.filter(blog => blog.userId === currentUser._id); // Kullanıcıya ait blogları filtrele
+  const myBlogs = blogs.filter(blog => blog.userId === currentUser._id);
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
