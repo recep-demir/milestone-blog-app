@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { blogSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
+import { blogSuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import useAxios from './useAxios'
@@ -15,45 +15,36 @@ const useBlogCalls = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken.get("blogs")
-            console.log(data);
+            console.log("data");
             
             dispatch(blogSuccess(data))
         } catch (error) {
             dispatch(fetchFail())
         }
     }
+    const getComments = async () =>{
+        dispatch(fetchStart())
+        try {
+            const { data } = await axiosWithToken.get("comments")
+            console.log("data");
+            dispatch(commentSuccess(data));            
+        } catch (error) {
+            dispatch(fetchFail())
+        }
+    }
 
-    const getComments = async (blogId) => {
-        try {
-          const { data } = await axiosWithToken.get(`/comments/${blogId}`);
-          dispatch(commentsSuccess({ blogId, comments: data }));
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    
-      const addComment = async (blogId, commentText) => {
-        try {
-          const { data } = await axiosWithToken.post("/comments/", {
-            blogId,
-            comment: commentText,
-          });
-          dispatch(addCommentSuccess({ blogId, comment: data }));
-        } catch (error) {
-          console.error(error);
-        }
-      };
 
     const toggleLike = async (id, userId) => {
         try {
           await axiosWithToken.post(`blogs/${id}/postLike`);
           dispatch(toggleLikeInState({ blogId: id, userId }));
         } catch (error) {
-          console.error(error);
+          console.error("Like error:", error);
         }
       };
 
-  return {getBlogs,toggleLike,getComments,addComment}
+
+  return {getBlogs,toggleLike,getComments}
 }
 
 export default useBlogCalls
