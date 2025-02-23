@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useEffect } from "react";
+import { useState } from "react";
 
 const Detail = () => {
   const location = useLocation();
@@ -16,6 +17,9 @@ const Detail = () => {
   const dispatch =useDispatch();
   const {comments} = useSelector(state => state.blog)
   const {getComments} = useBlogCalls()
+  const [Content, setContent] = useState("");
+  const { addComment } = useBlogCalls();
+
 
   useEffect(()=>{
     getComments()
@@ -23,6 +27,12 @@ const Detail = () => {
 
   const blogComments = comments.filter((comment) => comment.blogId === blog._id);
 
+  const handleAddComment = () => {
+    if (Content.trim()) {
+      addComment(blog._id, Content);
+      setContent("");
+    }
+  };
 
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
@@ -62,13 +72,21 @@ const Detail = () => {
         </Box>
       </Box>
 
-      <TextField label="Write a comment..." fullWidth multiline rows={3} sx={{ mt: 3 }} />
+      <TextField 
+      label="Write a comment..." 
+      fullWidth 
+      multiline 
+      rows={3}
+      value={Content}
+      onChange={(e) => setContent(e.target
+      .value)}
+      sx={{ mt: 3 }} />
 
-      <Button variant="contained" sx={{ mt: 2 }}>
+      <Button variant="contained" onClick={handleAddComment} sx={{ mt: 2 }}>
         Add Comment
       </Button>
 
-      {/* Yorumlar */}
+
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6">Comments</Typography>
         {blogComments.map((comment) => (
@@ -80,7 +98,7 @@ const Detail = () => {
               {new Date(comment.createdAt).toLocaleString("en-GB", { weekday: "short", day: "2-digit", month: "short", year: "numeric" })}
             </Typography>
             <Typography variant="body1" sx={{ mt: 1 }}>
-              {comment.content}
+              {comment.comment}
             </Typography>
           </Box>
         ))}

@@ -28,7 +28,8 @@ const blogSlice = createSlice({
       commentSuccess: (state,{payload}) =>{
         state.loading =false;
         state.error =false;
-        state.comments =payload.data;        
+        state.comments =payload.data; 
+        console.log(payload.data)       
       },
       toggleLikeInState: (state, { payload }) => {
         const blog = state.blogs.find((b) => b._id === payload.blogId);

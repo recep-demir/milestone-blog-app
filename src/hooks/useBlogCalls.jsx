@@ -26,12 +26,24 @@ const useBlogCalls = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken.get("comments")
-            console.log("data");
+            console.log("fetched Comments",data);
             dispatch(commentSuccess(data));            
         } catch (error) {
             dispatch(fetchFail())
         }
     }
+
+    const addComment =async (blogId, comment) =>{
+        dispatch(fetchStart());
+        try {
+          const { data } = await axiosWithToken.post("comments", { blogId, comment });
+          console.log("api",data)
+          dispatch(commentSuccess([...comments, data]));
+        } catch (error) {
+            console.error("Aloo hata var adding comment ", error);
+          dispatch(fetchFail());
+        }
+      };
 
 
     const toggleLike = async (id, userId) => {
@@ -44,7 +56,7 @@ const useBlogCalls = () => {
       };
 
 
-  return {getBlogs,toggleLike,getComments}
+  return {getBlogs,toggleLike,getComments,addComment}
 }
 
 export default useBlogCalls
