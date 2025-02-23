@@ -4,14 +4,23 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Avatar, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
   const {categories} = useSelector(state => state.blog)
-  const {getCategories} =useBlogCalls()
+  const {getCategories,addBlog} =useBlogCalls()
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    title: "",
+    image: "",
+    categoryId: "",
+    content: "",
+    isPublish: "draft"
+  });
 
   useEffect(() => {
     console.log("Kategoriler çekiliyor...");
