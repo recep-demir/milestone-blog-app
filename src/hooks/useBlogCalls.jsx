@@ -33,6 +33,18 @@ const useBlogCalls = () => {
         }
     }
 
+    const getCategories =async () =>{
+        dispatch(fetchStart())
+        try {
+          const { data } = await axiosWithToken.get("categories");
+          console.log("Gelen Kategoriler",data);
+          dispatch(categorySuccess(data));
+        } catch (error) {
+          console.error("Kategori getirme hatası", error);
+          dispatch(fetchFail());
+        }
+    }
+
     const addComment =async (blogId, comment) =>{
         dispatch(fetchStart());
         try {
@@ -56,7 +68,7 @@ const useBlogCalls = () => {
       };
 
 
-  return {getBlogs,toggleLike,getComments,addComment}
+  return {getBlogs,toggleLike,getComments,addComment,getCategories}
 }
 
 export default useBlogCalls
