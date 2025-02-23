@@ -14,7 +14,8 @@ const MyBlogs = () => {
     getBlogs();
   }, []);
 
-  const myBlogs = blogs.filter(blog => blog.isMyBlog);
+  const { currentUser } = useSelector(state => state.auth); // Kullanıcı bilgilerini al
+  const myBlogs = blogs.filter(blog => blog.userId === currentUser._id); // Kullanıcıya ait blogları filtrele
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
