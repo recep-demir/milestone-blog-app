@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { blogSuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
+import { addCommentToState, blogSuccess, commentSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import useAxios from './useAxios'
@@ -15,7 +15,7 @@ const useBlogCalls = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken.get("blogs")
-            console.log("data");
+            console.log("Gelen Bloglar",data);
             
             dispatch(blogSuccess(data))
         } catch (error) {
@@ -26,7 +26,7 @@ const useBlogCalls = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken.get("comments")
-            console.log("fetched Comments",data);
+            console.log("cekilen Comments",data);
             dispatch(commentSuccess(data));            
         } catch (error) {
             dispatch(fetchFail())
@@ -37,8 +37,8 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
           const { data } = await axiosWithToken.post("comments", { blogId, comment });
-          console.log("api",data)
-          dispatch(commentSuccess([...comments, data]));
+          console.log("giden yorumlar",data)
+          dispatch(addCommentToState(data));
         } catch (error) {
             console.error("Aloo hata var adding comment ", error);
           dispatch(fetchFail());

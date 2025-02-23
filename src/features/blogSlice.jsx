@@ -29,8 +29,13 @@ const blogSlice = createSlice({
         state.loading =false;
         state.error =false;
         state.comments =payload.data; 
-        console.log(payload.data)       
+        console.log("slice eklenen data",payload.data)       
       },
+      addCommentToState: (state, { payload }) => {
+        console.log("Redux'a eklenen yorum:", payload);
+        state.comments.push(payload);
+      },
+
       toggleLikeInState: (state, { payload }) => {
         const blog = state.blogs.find((b) => b._id === payload.blogId);
         if (blog) {
@@ -47,6 +52,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess  } = blogSlice.actions;
+export const { fetchStart,fetchFail,blogSuccess,toggleLikeInState,commentSuccess,addCommentToState  } = blogSlice.actions;
 
 export default blogSlice.reducer;

@@ -16,9 +16,8 @@ const Detail = () => {
   const blog = location.state?.blog;
   const dispatch =useDispatch();
   const {comments} = useSelector(state => state.blog)
-  const {getComments} = useBlogCalls()
+  const {getComments,addComment} = useBlogCalls()
   const [Content, setContent] = useState("");
-  const { addComment } = useBlogCalls();
 
 
   useEffect(()=>{
@@ -26,6 +25,7 @@ const Detail = () => {
   },[])
 
   const blogComments = comments.filter((comment) => comment.blogId === blog._id);
+  console.log("Filtered Comments:", blogComments);
 
   const handleAddComment = () => {
     if (Content.trim()) {

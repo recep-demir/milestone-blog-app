@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 
 
-export default function BlogCard({ blog, handleDetails }) {
+export default function BlogCard({ blog}) {
   const { _id, title, createdAt, content, image,likes,countOfVisitors,comments } = blog;
   const navigate = useNavigate()
   const { toggleLike } = useBlogCalls();
