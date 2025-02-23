@@ -108,16 +108,27 @@ const NewBlog = () => {
         onChange={(e) => setContent(e.target.value)}
         required
       />
-
+      <br />
+      <br />
+      
       <Button variant="contained" fullWidth type="submit">
-        SUBMIT
+        New Blog
       </Button>
+    
+
     </form>
+    
       
         </Grid>
+       
 
       </Grid>
+      <br />
+      <br />
+      <br />
+      <br />
     </Container>
+    
     
   );
 };
