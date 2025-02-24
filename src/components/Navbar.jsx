@@ -89,12 +89,12 @@ function Navbar() {
               anchorEl={anchorElUser}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-              sx={{ mt: "45px" }}
+              sx={{ mt: "45px"}}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={setting.name === "Logout" ? logout : () => navigate(setting.path)}> 
+                <MenuItem key={setting.name} onClick={setting.name === "Logout" ? logout : () => navigate(setting.path)} sx={{ width: "140px",height:"40px", justifyContent: "center" }} > 
     
-                  <Typography textAlign="center">{setting.name}</Typography>
+                  <Typography textAlign="center" sx={{ fontSize: "1.1rem" }}>{setting.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>

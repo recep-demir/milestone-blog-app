@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   //!Pagination
   const [page, setPage] = useState(1);
-  const blogsPerPage = 9;
+  const blogsPerPage = 6;
   const totalPages = Math.ceil((blogs?.length || 0) / blogsPerPage);
   const currentBlogs = blogs?.slice(
     (page - 1) * blogsPerPage, 
