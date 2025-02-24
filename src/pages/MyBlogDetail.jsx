@@ -13,7 +13,8 @@ const MyBlogDetail = () => {
   console.log("Parametre ID:", id);
   const navigate = useNavigate();
   const { blogs } = useSelector((state) => state.blog);
-  
+  const {currentUser} = useSelector(state => state.auth)
+
   const { getBlogs } = useBlogCalls();
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const MyBlogDetail = () => {
           <PersonIcon />
         </Avatar>
         <Typography variant="body1" sx={{ fontWeight: "bold", mr: 2 }}>
-          {blog.author}
+          {currentUser}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {new Date(blog.createdAt).toLocaleString("en-GB", { weekday: "short", day: "2-digit", month: "short", year: "numeric" })}

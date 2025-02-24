@@ -1,6 +1,7 @@
 import * as React from "react";
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import PersonIcon from "@mui/icons-material/Person";
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import { Link, useNavigate } from "react-router-dom";
 import useAuthCalls from "../hooks/useAuthCalls";
@@ -81,7 +82,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User" src="/static/images/avatar/2.jpg" />
+              <PersonIcon sx={{ color: "white", fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
             <Menu
