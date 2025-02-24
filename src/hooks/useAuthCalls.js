@@ -26,7 +26,7 @@ const useAuthCalls = () => {
         localStorage.setItem("token", data.token)
         // localStorage.setItem("userId", data.data._id)
         // localStorage.setItem("userName", data.data.username)
-        toastSuccessNotify("Registered successfully<br />Welcome!<br />Willkomen!<br />Hosgeldiniz!" )
+        toastSuccessNotify("Registered successfully  -  Welcome!" )
         navigate("/")
       
     } catch (error) {
@@ -42,7 +42,7 @@ const useAuthCalls = () => {
       );
       dispatch(loginSuccess(data))
       localStorage.setItem("token", data.token)
-      toastSuccessNotify("Login successful")
+      toastSuccessNotify("Login successful  -  Welcome!")
       navigate("/")
     } catch (error) {
         dispatch(fetchFail())
