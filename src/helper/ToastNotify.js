@@ -14,14 +14,17 @@ export const toastWarnNotify = msg => {
 
 export const toastSuccessNotify = msg => {
   toast.success(msg, {
+    position: "top-center",
     autoClose: 1500,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    enableHtml: true,
   });
 };
+
 
 export const toastErrorNotify = msg => {
   toast.error(msg, {

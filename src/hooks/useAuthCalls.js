@@ -26,7 +26,7 @@ const useAuthCalls = () => {
         localStorage.setItem("token", data.token)
         // localStorage.setItem("userId", data.data._id)
         // localStorage.setItem("userName", data.data.username)
-        toastSuccessNotify("User registered successfully")
+        toastSuccessNotify("Registered successfully<br />Welcome!<br />Willkomen!<br />Hosgeldiniz!" )
         navigate("/")
       
     } catch (error) {
