@@ -7,17 +7,19 @@ import DeleteModal from "../components/blog/DeleteModal";
 
 const MyBlogDetail = () => {
   const { id } = useParams();
+  console.log("Parametre ID:", id);
   const navigate = useNavigate();
   const { blogs } = useSelector((state) => state.blog);
   const { getBlogs } = useBlogCalls();
 
   useEffect(() => {
+    console.log("Bloglar çekiliyor mu");
     getBlogs();
   }, []);
 
   console.log("Parametre ID:", id);
   console.log("Tüm Bloglar:", blogs);
-  
+
   const blog = blogs.find((blog) => blog._id === id);
   if (!blog) return <Typography variant="h6">Blog not found</Typography>;
 
