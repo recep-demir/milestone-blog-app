@@ -68,6 +68,16 @@ const useBlogCalls = () => {
             dispatch(fetchFail())            
         }
     }
+    const deleteBlog = async (blogId) => {
+        dispatch(fetchStart());
+        try {
+          await axiosWithToken.delete(`blogs/${blogId}`);
+          dispatch(getBlogs); // Blogları güncelle
+        } catch (error) {
+          console.error("Delete blog error:", error);
+          dispatch(fetchFail());
+        }
+      };
 
 
     const toggleLike = async (id, userId) => {
@@ -80,7 +90,7 @@ const useBlogCalls = () => {
       };
 
 
-  return {getBlogs,toggleLike,getComments,addComment,getCategories,addBlog}
+  return {getBlogs,toggleLike,getComments,addComment,getCategories,addBlog,deleteBlog}
 }
 
 export default useBlogCalls
