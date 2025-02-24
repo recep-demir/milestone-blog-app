@@ -32,11 +32,10 @@ const Detail = () => {
   console.log("Şu Anki Blogid:", blog._id);
   console.log("tüm bloglar",blog)
 
-  const handleAddComment = async () => {
+  const handleAddComment = () => {
     if (Content.trim()) {
-      await addComment(blog._id, Content);
-      setContent("");  
-      getComments();
+      addComment(blog._id, Content);
+      setContent("");
     }
   };
 
