@@ -24,13 +24,15 @@ const blogSlice = createSlice({
       blogSuccess: (state,{payload}) =>{
         state.loading =false;
         state.error =false;
-        state.blogs =payload.data;        
+        state.blogs =payload.data; 
+        console.log("slice eklenen blog",payload.data)  
+
       },
       commentSuccess: (state,{payload}) =>{
         state.loading =false;
         state.error =false;
         state.comments =payload.data; 
-        console.log("slice eklenen data",payload.data)       
+        console.log("slice eklenen comments",payload.data)       
       },
       addCommentToState: (state, { payload }) => {
         console.log("Redux'a eklenen yorum:", payload);

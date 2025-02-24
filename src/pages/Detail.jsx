@@ -16,21 +16,27 @@ const Detail = () => {
   const blog = location.state?.blog;
   const dispatch =useDispatch();
   const {comments} = useSelector(state => state.blog)
+  const { blogs } = useSelector((state) => state.blog);
+  
   const {getComments,addComment} = useBlogCalls()
   const [Content, setContent] = useState("");
 
 
   useEffect(()=>{
     getComments()
-  },[])
+  },[blog._id])
 
   const blogComments = comments.filter((comment) => comment.blogId === blog._id);
-  console.log("Filtered Comments:", blogComments);
+  console.log(blog.blogId)
+  console.log("Tüm Yorumlar:", comments);
+  console.log("Şu Anki Blogid:", blog._id);
+  console.log("tüm bloglar",blog)
 
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
     if (Content.trim()) {
-      addComment(blog._id, Content);
-      setContent("");
+      await addComment(blog._id, Content);
+      setContent("");  
+      getComments();
     }
   };
 
@@ -60,15 +66,15 @@ const Detail = () => {
       <Box sx={{ display: "flex", gap: 3, mt: 3 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
           <FavoriteIcon />
-          <Typography>0</Typography>
+          <Typography>{blog.likes.length}</Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
           <CommentIcon />
-          <Typography>0</Typography>
+          <Typography>{blog.comments.length}</Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
           <RemoveRedEyeIcon />
-          <Typography>0</Typography>
+          <Typography>{blog.countOfVisitors}</Typography>
         </Box>
       </Box>
 

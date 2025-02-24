@@ -13,24 +13,13 @@ const useBlogCalls = () => {
     const getBlogs = async () => {
         dispatch(fetchStart())
         try {
-            const { data } = await axiosWithToken.get("blogs")
-            console.log("Gelen Bloglar",data);
-            
+            const { data } = await axiosWithToken.get("blogs")           
             dispatch(blogSuccess(data))
         } catch (error) {
             dispatch(fetchFail())
         }
     }
-    const getComments = async () =>{
-        dispatch(fetchStart())
-        try {
-            const { data } = await axiosWithToken.get("comments")
-            console.log("cekilen Comments",data);
-            dispatch(commentSuccess(data));            
-        } catch (error) {
-            dispatch(fetchFail())
-        }
-    }
+
     const addComment =async (blogId, comment) =>{
         dispatch(fetchStart());
         try {
@@ -42,6 +31,16 @@ const useBlogCalls = () => {
           dispatch(fetchFail());
         }
       };
+      const getComments = async () =>{
+        dispatch(fetchStart())
+        try {
+            const { data } = await axiosWithToken.get("comments")
+            console.log("cekilen Comments",data);
+            dispatch(commentSuccess(data));            
+        } catch (error) {
+            dispatch(fetchFail())
+        }
+    }
     const getCategories =async () =>{
         dispatch(fetchStart())
         try {
