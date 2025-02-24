@@ -1,38 +1,10 @@
 
-
-
-
-
-
-
-
-📂 Project Structure
-
-📦 project-name
-├── 📂 src
-│   ├── 📂 components
-│   │   ├── 📜 Navbar.jsx
-│   │   ├── 📂 auth
-│   │   │   ├── 📜 RegisterForm.jsx
-│   │   │   ├── 📜 LoginForm.jsx
-│   ├── 📂 hooks
-│   │   ├── 📜 useAuthCalls.js
-│   ├── 📂 pages
-│   │   ├── 📜 Register.jsx
-│   │   ├── 📜 Login.jsx
-│   │   ├── 📜 Dashboard.jsx
-│   ├── 📂 features
-│   │   ├── 📜 authSlice.js
-│   ├── 📜 App.jsx
-│   ├── 📜 main.jsx
-├── 📜 .env
-├── 📜 package.json
-├── 📜 README.md
 🔗 API Requests
 Action	HTTP Method	Endpoint
 User Registration	POST	/users
 User Login	POST	/auth/login
 User Logout	GET	/auth/logout
+
 🎯 Future Improvements
 ✅ User authentication (register, login, logout)
 
