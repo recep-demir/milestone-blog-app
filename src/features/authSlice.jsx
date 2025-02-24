@@ -31,9 +31,8 @@ const authSlice = createSlice({
       state.currentUser=payload?.user?.username
       console.log("autslicadaki curentuser",state.currentUser)
       state.userId=payload?.user?._id
-      console.log("userId autslice",state.userId)
+      console.log("userId autslic",state.userId)
       state.email = payload?.user?.email;
-      console.log("userId autslice",state.email)
       state.loading = false;
     },
     logoutSuccess: (state) => {

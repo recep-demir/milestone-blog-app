@@ -19,16 +19,30 @@ const useBlogCalls = () => {
             dispatch(fetchFail())
         }
     }
-    const getComments = async () =>{
-        dispatch(fetchStart())
-        try {
-            const { data } = await axiosWithToken.get("comments")
-            console.log("cekilen Comments",data);
-            dispatch(commentSuccess(data));            
-        } catch (error) {
-            dispatch(fetchFail())
-        }
-    }
+    // const getComments = async () =>{
+    //     dispatch(fetchStart())
+    //     try {
+    //         const { data } = await axiosWithToken.get("comments")
+    //         console.log("cekilen Comments",data);
+    //         dispatch(commentSuccess(data));            
+    //     } catch (error) {
+    //         dispatch(fetchFail())
+    //     }
+    // }
+
+    const getCommentsByID = async (blogId) => {
+      dispatch(fetchStart());
+      try {
+        const { data } = await axiosWithToken.get(
+          `comments?filter[blogId]=${blogId}`
+        );
+        console.log('cekilen Comments', data);
+        dispatch(commentSuccess(data));
+      } catch (error) {
+        dispatch(fetchFail());
+      }
+    };
+    
     const addComment =async (blogId, comment) =>{
         dispatch(fetchStart());
         try {
@@ -87,7 +101,7 @@ const useBlogCalls = () => {
       };
 
 
-  return {getBlogs,toggleLike,getComments,addComment,getCategories,addBlog,deleteBlog}
+  return {getBlogs,toggleLike,addComment,getCategories,addBlog,deleteBlog,getCommentsByID}
 }
 
 export default useBlogCalls

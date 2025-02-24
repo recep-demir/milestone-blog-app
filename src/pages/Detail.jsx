@@ -18,12 +18,12 @@ const Detail = () => {
   const {comments} = useSelector(state => state.blog)
   const { blogs } = useSelector((state) => state.blog);
   
-  const {getComments,addComment} = useBlogCalls()
+  const {addComment,getCommentsByID} = useBlogCalls()
   const [Content, setContent] = useState("");
 
 
   useEffect(()=>{
-    getComments()
+    getCommentsByID(blog._id)
   },[blog._id])
 
   const blogComments = comments.filter((comment) => comment.blogId === blog._id);
@@ -36,6 +36,7 @@ const Detail = () => {
     if (Content.trim()) {
       addComment(blog._id, Content);
       setContent("");
+      getCommentsByID(blog._id);
     }
   };
 
