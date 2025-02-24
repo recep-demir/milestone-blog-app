@@ -20,15 +20,15 @@ const authSlice = createSlice({
     },
     registerSuccess: (state,{payload}) =>{
       state.loading= false;
-      state.currentUser = payload.data.username;
-      state.userId = payload.data._id;
+      state.currentUser = payload.user.username;
+      state.userId = payload.user._id;
       state.token = payload.token;
     },
     loginSuccess:(state,{payload})=>{
       state.token=payload?.token;
-      state.currentUser=payload?.data?.username
+      state.currentUser=payload?.user?.username
       console.log("currentuser in autslice",state.currentUser)
-      state.userId=payload?.data?._id
+      state.userId=payload?.user?._id
       console.log("userId in autslice",state.userId)
       state.loading = false;
     },
@@ -38,11 +38,6 @@ const authSlice = createSlice({
       state.currentUser = null;
       state.userId = null;
     },
-
-    
-
-
-
   },
 });
 
