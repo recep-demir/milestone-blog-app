@@ -106,9 +106,12 @@ const Detail = () => {
             <Typography variant="body1" sx={{ mt: 1 }}>
               {comment.comment}
             </Typography>
+            
           </Box>
+          
         ))}
       </Box>
+      <br />
     </Container>
   );
 };

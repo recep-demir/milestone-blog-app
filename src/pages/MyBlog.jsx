@@ -15,26 +15,36 @@ const MyBlogs = () => {
     getBlogs();
   }, []);
 
-
   const myBlogs = blogs.filter((blog) => blog.userId === userId);
 
   return (
-    <Grid container spacing={3} sx={{ p: 3, height: "100vh" }}>
-      {myBlogs.map((blog) => (
-        <Grid item xs={12} sm={6} md={4} key={blog._id}>
-          <Card>
-            <CardMedia component="img" height="140" image={blog.image} alt={blog.title} />
-            <CardContent>
-              <Typography gutterBottom variant="h5">{blog.title}</Typography>
-              <Typography variant="body2" color="text.secondary">{blog.content.substring(0, 100)}...</Typography>
-            </CardContent>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
-              <Button size="small" onClick={() => navigate(`/my-blogs/${blog._id}`)}>Read More</Button>
-              <DeleteModal blogId={blog._id} />
-            </Box>
-          </Card>
-        </Grid>
-      ))}
+    <Grid container spacing={3} sx={{ p: 3, height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      {myBlogs.length > 0 ? (
+        myBlogs.map((blog) => (
+          <Grid item xs={12} sm={6} md={4} key={blog._id}>
+            <Card>
+              <CardMedia component="img" height="140" image={blog.image} alt={blog.title} />
+              <CardContent>
+                <Typography gutterBottom variant="h5">{blog.title}</Typography>
+                <Typography variant="body2" color="text.secondary">{blog.content.substring(0, 100)}...</Typography>
+              </CardContent>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
+                <Button size="small" onClick={() => navigate(`/my-blogs/${blog._id}`)}>Read More</Button>
+                <DeleteModal blogId={blog._id} />
+              </Box>
+            </Card>
+          </Grid>
+        ))
+      ) : (
+        <Box textAlign="center">
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            You haven't created any blogs yet.
+          </Typography>
+          <Button variant="contained" color="primary" onClick={() => navigate("/new-blog")}>
+            Click here to create a new blog
+          </Button>
+        </Box>
+      )}
     </Grid>
   );
 };

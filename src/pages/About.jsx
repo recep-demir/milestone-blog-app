@@ -4,8 +4,22 @@ import { LinkedIn, GitHub, Code } from "@mui/icons-material";
 
 const About = () => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-      <Card sx={{ p: 5, textAlign: "center", maxWidth: 800 }}>
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="82.1vh" backgroundColor="grey.500">
+      <Card sx={{
+         p: 5, textAlign: "center", maxWidth: 800,
+         margin:"1rem",
+          overflow: "auto",
+          border: "2px solid purple",
+          // backgroundColor:"gray",
+          borderRadius: "0.5rem",
+          boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+                    transition: "transform 0.2s ease-in-out",
+          "&:hover": {
+            transform: "scale(1.02)",
+          },
+
+         
+         }}>
         <CardContent>
           <Typography variant="h4" fontWeight="bold">
             Recep Demir
@@ -18,7 +32,7 @@ const About = () => {
               component="a"
               href="https://www.linkedin.com/in/recep-demir"
               target="_blank"
-              sx={{ "&:hover": { color: "red" } }}
+              sx={{ "&:hover": { color: "purple" } }}
             >
               <LinkedIn fontSize="large" />
             </IconButton>
@@ -26,7 +40,7 @@ const About = () => {
               component="a"
               href="https://github.com/recep-demir"
               target="_blank"
-              sx={{ "&:hover": { color: "red" } }}
+              sx={{ "&:hover": { color: "purple" } }}
             >
               <GitHub fontSize="large" />
             </IconButton>
@@ -34,7 +48,7 @@ const About = () => {
               component="a"
               href="https://dev.to/recepdemir"
               target="_blank"
-              sx={{ "&:hover": { color: "red" } }}
+              sx={{ "&:hover": { color: "purple" } }}
             >
               <Code fontSize="large" />
             </IconButton>

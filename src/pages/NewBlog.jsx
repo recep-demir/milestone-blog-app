@@ -107,7 +107,7 @@ const { currentUser } = useSelector(state => state.auth);
         </Grid> 
 
       </Grid>
-      <br />      <br />      <br />      <br />
+      
     </Container>   
     
   );
