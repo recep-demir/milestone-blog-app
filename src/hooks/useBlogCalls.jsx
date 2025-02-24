@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addCommentToState, blogSuccess, categorySuccess, commentSuccess, createBlogSuccess, fetchFail, fetchStart,toggleLikeInState } from '../features/blogSlice'
 import { useSelector } from 'react-redux'
-import axios from 'axios'
 import useAxios from './useAxios'
 
 const useBlogCalls = () => {

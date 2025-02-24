@@ -8,7 +8,6 @@ export const btnStyle = {
     },
   }
 
-
  export const selectedStyle = {
     backgroundColor: "secondary.second",
     color: "white",
@@ -18,7 +17,6 @@ export const btnStyle = {
       color: "white",
     },
   }
-
   export const modalStyle = {
     position: "absolute",
     top: "50%",

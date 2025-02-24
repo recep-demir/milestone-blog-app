@@ -17,7 +17,7 @@ const DeleteModal = ({ blogId }) => {
         Delete
       </Button>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <Box sx={{ p: 4, bgcolor: "white", borderRadius: 2, textAlign: "center" }}>
+        <Box sx={{ p: 4, bgcolor: "white", borderRadius: 2, textAlign: "center", width:"50%",margin: "auto" }}>
           <Typography variant="h6">Are you sure you want to delete this blog?</Typography>
           <Box sx={{ mt: 2, display: "flex", justifyContent: "space-around" }}>
             <Button variant="contained" color="error" onClick={handleDelete}>

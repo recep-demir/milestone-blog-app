@@ -13,13 +13,11 @@ import useBlogCalls from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 
 
-
 export default function BlogCard({ blog}) {
   const { _id, title, createdAt, content, image,likes,countOfVisitors,comments } = blog;
   const navigate = useNavigate()
   const { toggleLike } = useBlogCalls();
   const { user } = useSelector((state) => state.auth);
-
   const isLiked = likes.includes(user?._id);
 
   

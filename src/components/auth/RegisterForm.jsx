@@ -101,13 +101,8 @@ const RegisterForm = ({
         margin="normal"
         type="password"
       />
-
       <Button variant="contained" fullWidth type='submit' >Submit</Button>
-
-
-
     </form>
   )
 }
-
 export default RegisterForm
