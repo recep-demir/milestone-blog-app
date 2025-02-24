@@ -37,6 +37,7 @@ const Dashboard = () => {
         onChange={(event, value) => setPage(value)}
         sx={{ display: "flex", justifyContent: "center", marginTop: 3 }}
       />
+      <br />
     </Container>
   );
 };

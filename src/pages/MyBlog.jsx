@@ -19,7 +19,7 @@ const MyBlogs = () => {
   const myBlogs = blogs.filter((blog) => blog.userId === userId);
 
   return (
-    <Grid container spacing={3} sx={{ p: 3 }}>
+    <Grid container spacing={3} sx={{ p: 3, height: "100vh" }}>
       {myBlogs.map((blog) => (
         <Grid item xs={12} sm={6} md={4} key={blog._id}>
           <Card>

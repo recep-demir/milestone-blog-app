@@ -8,6 +8,7 @@ const authSlice = createSlice({
     error: false,
     token: null,
     userId: null,
+    email: null,
   },
   reducers: {
     fetchStart: state => {
@@ -22,14 +23,17 @@ const authSlice = createSlice({
       state.loading= false;
       state.currentUser = payload.user.username;
       state.userId = payload.user._id;
+      state.email = payload.user.email;
       state.token = payload.token;
     },
     loginSuccess:(state,{payload})=>{
       state.token=payload?.token;
       state.currentUser=payload?.user?.username
-      console.log("currentuser in autslice",state.currentUser)
+      console.log("autslicadaki curentuser",state.currentUser)
       state.userId=payload?.user?._id
-      console.log("userId in autslice",state.userId)
+      console.log("userId autslice",state.userId)
+      state.email = payload?.user?.email;
+      console.log("userId autslice",state.email)
       state.loading = false;
     },
     logoutSuccess: (state) => {
