@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 const MyBlogs = () => {
   const { blogs } = useSelector(state => state.blog);
-  const { currentUser } = useSelector(state => state.auth);
-  console.log("Current User:", currentUser)
-  console.log("myblog sayfasi", blogs)
+  const { userId } = useSelector(state => state.auth);
+  // 67bb973e1d32840b5fab0c85
+   console.log("myblog sayfasi", blogs)
+   console.log("userid", userId)
   const { getBlogs } = useBlogCalls();
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const MyBlogs = () => {
   }, []);
   console.log("Bloglar:", blogs);
 
-  const myBlogs = blogs.filter(blog => blog.userId === currentUser._id);
+  const myBlogs = blogs.filter(blog => blog.userId === userId);
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
@@ -38,3 +39,4 @@ const MyBlogs = () => {
 };
 
 export default MyBlogs;
+

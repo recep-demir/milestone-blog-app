@@ -19,9 +19,10 @@ const useAuthCalls = () => {
 
     try {
       const { data } = await axios.post(
-        `${BASE_URL}/users`,
+        `${BASE_URL}users`,
         userInfo);
-        dispatch(registerSuccess(data))
+        console.log("API Yanıtı:", data);
+        dispatch(registerSuccess(data))        
         localStorage.setItem("token", data.token)
         toastSuccessNotify("User registered successfully")
         navigate("/")

@@ -7,8 +7,8 @@ import useAxios from './useAxios'
 
 const useBlogCalls = () => {
     const dispatch =useDispatch()
-    // const BASE_URL=import.meta.env.VITE_BASE_URL
-    // const {token}=useSelector(state => state.auth)
+    const BASE_URL=import.meta.env.VITE_BASE_URL
+    const {token}=useSelector(state => state.auth)
     const {axiosWithToken}=useAxios()
 
     const getBlogs = async () => {
