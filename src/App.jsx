@@ -7,7 +7,6 @@ import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/integration/react";
 
 
-
 function App() {
   const theme = createTheme({
     palette: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, logoutSuccess, registerSuccess,loginSuccess } from '../features/authSlice';
+import {fetchFail, fetchStart, logoutSuccess, registerSuccess,loginSuccess } from '../features/authSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toastSuccessNotify } from '../helper/ToastNotify';
