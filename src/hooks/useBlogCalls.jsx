@@ -70,7 +70,7 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
           await axiosWithToken.delete(`blogs/${blogId}`);
-          dispatch(getBlogs); // Blogları güncelle
+          dispatch(getBlogs);
         } catch (error) {
           console.error("Delete blog error:", error);
           dispatch(fetchFail());
