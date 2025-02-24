@@ -1,8 +1,22 @@
-# React + Vite
+# React Authentication App 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a user authentication application built with React.js. Users can register, log in, and log out. The project uses popular libraries such as Redux Toolkit, Material UI, and Formik for state management, UI design, and form handling.
 
-Currently, two official plugins are available:
+## 📌 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js** (with Vite)
+- **Redux Toolkit** (State Management)
+- **Redux Persist** (Data Persistence)
+- **React Router** (Navigation)
+- **Formik & Yup** (Form Handling & Validation)
+- **Material UI** (UI Design)
+- **Axios** (API Requests)
+- **React Toastify** (Notifications)
+
+## 🚀 How to Run the Project
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/project-name.git
+cd project-name
