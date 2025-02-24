@@ -25,7 +25,7 @@ const Dashboard = () => {
     <Container>
       <Grid container spacing={2} mt={2}>
         {currentBlogs?.map((blog) => (
-          <Grid item xs={12} md={6} lg={4} xl={3} key={blog._id}
+          <Grid item xs={12} md={6} lg={4} key={blog._id}
           sx ={{
           minHeight: "350px",
           transition: "transform 0.2s ease-in-out",
