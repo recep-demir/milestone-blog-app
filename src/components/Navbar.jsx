@@ -92,7 +92,7 @@ function Navbar() {
               sx={{ mt: "45px" }}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={setting.name === "Logout" ? logout : () => navigate(setting.path)}> {/* i call the logout function for Logout */}
+                <MenuItem key={setting.name} onClick={setting.name === "Logout" ? logout : () => navigate(setting.path)}> 
     
                   <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
