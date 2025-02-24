@@ -29,7 +29,7 @@ const MyBlogs = () => {
               <Typography variant="body2" color="text.secondary">{blog.content.substring(0, 100)}...</Typography>
             </CardContent>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
-              <Button size="small" onClick={() => navigate(`/myblog/${blog._id}`)}>Read More</Button>
+              <Button size="small" onClick={() => navigate(`/my-blog/${blog._id}`)}>Read More</Button>
               <DeleteModal blogId={blog._id} />
             </Box>
           </Card>
