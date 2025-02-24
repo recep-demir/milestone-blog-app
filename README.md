@@ -1,9 +1,8 @@
-
-## Screenshots
+# React Milestone Blog App
 
 ![App Screenshot](./public/image.png)
 
-# React Milestone Blog App
+
 
 This project is a user authentication application built with React.js. Users can register, log in, and log out. The project uses popular libraries such as Redux Toolkit, Material UI, and Formik for state management, UI design, and form handling.
 
