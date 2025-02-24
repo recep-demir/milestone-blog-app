@@ -19,7 +19,16 @@ const useBlogCalls = () => {
             dispatch(fetchFail())
         }
     }
-
+    const getComments = async () =>{
+        dispatch(fetchStart())
+        try {
+            const { data } = await axiosWithToken.get("comments")
+            console.log("cekilen Comments",data);
+            dispatch(commentSuccess(data));            
+        } catch (error) {
+            dispatch(fetchFail())
+        }
+    }
     const addComment =async (blogId, comment) =>{
         dispatch(fetchStart());
         try {
@@ -31,16 +40,6 @@ const useBlogCalls = () => {
           dispatch(fetchFail());
         }
       };
-      const getComments = async () =>{
-        dispatch(fetchStart())
-        try {
-            const { data } = await axiosWithToken.get("comments")
-            console.log("cekilen Comments",data);
-            dispatch(commentSuccess(data));            
-        } catch (error) {
-            dispatch(fetchFail())
-        }
-    }
     const getCategories =async () =>{
         dispatch(fetchStart())
         try {
@@ -70,7 +69,7 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
           await axiosWithToken.delete(`blogs/${blogId}`);
-          dispatch(getBlogs);
+          dispatch(getBlogs); // Blogları güncelle
         } catch (error) {
           console.error("Delete blog error:", error);
           dispatch(fetchFail());
