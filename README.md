@@ -22,7 +22,7 @@ This project is a user authentication application built with React.js. Users can
 1 - Clone the Repository
 
 
-git clone https://github.com/your-username/project-name.git
+git clone https://github.com/recep-demir/milestone-blog-app.git
 
 ```bash
 cd project-name
