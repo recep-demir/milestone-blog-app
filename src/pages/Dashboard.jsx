@@ -32,11 +32,7 @@ const Dashboard = () => {
           "&:hover": {
             transform: "scale(1.02)",
           },
-          
-          
-            
           }}
-          
           >
             <BlogCard blog={blog} />
           </Grid>
